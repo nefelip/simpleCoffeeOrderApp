@@ -2,7 +2,9 @@ package com.exaple.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     int quantity = 0;
     int pricePerCup = 5;
     String serverName = "Nefeli Pappa";
+    boolean hasWhippedCream=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +33,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * Get the checked state of the checkbox whipped cream
+     */
+    public void whippedCreamState(View view) {
+        hasWhippedCream=((CheckBox) findViewById(R.id.whippedCream)).isChecked();
+        Log.v("MainActivity","state: "+hasWhippedCream);
+    }
+
+    /**
      * Create the order summary on the screen
      * @return the text summary
      */
     private String createOrderSummary() {
         String priceMessage = "Name: " + serverName;
+        priceMessage += "\nAdd whipped cream: " + hasWhippedCream;
         priceMessage += "\nQuantity: " + quantity;
         priceMessage += "\nTotal: $" + calculatePrice();
         return priceMessage += "\nThank you!";
