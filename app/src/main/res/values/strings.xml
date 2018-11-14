@@ -5,4 +5,6 @@
     <string name="price">Order Summary</string>
     <string name="topings">Toppings</string>
     <string name="whippedCream">Whipped cream</string>
+    <string name="choco">Chocolate</string>
+    <string name="name">Name</string>
 </resources>
